@@ -1,0 +1,23 @@
+name: FishingLife2
+version: '${project.version}'
+main: me.brotherhong.fishinglife2.FishingLife2
+api-version: 1.13
+depend: [ WorldEdit ]
+authors: [ BrotherHong ]
+description: An improve version of FishingLife
+
+commands:
+  fishinglife:
+    description: Main command of this plugin.
+    aliases: [ fl ]
+
+permissions:
+  fishinglife.op:
+    description: Access anything of this plugin.
+    default: op
+    children:
+      fishinglife.show: true
+
+  fishinglife.show:
+    description: Access to /fl show command
+    default: true

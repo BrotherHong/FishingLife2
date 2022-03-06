@@ -1,0 +1,51 @@
+prefix: '&7[&bFishing&cLife&7]'
+
+# Placeholders
+#   %player% - player's display name
+#   %chance% - chance of the drop
+#   %broadcast% - broadcast or not
+#   %drop% - drop's display name
+#   %region_name% - region's name
+#   %current_page% - current page
+
+# general messages
+general:
+  yes-msg: '&aYes'
+  no-msg: '&cNo'
+  caught-message: '&aYou caught %drop%'
+  broadcast-message: '&aPlayer &e%player%&a caught %drop% in %region_name%'
+  reload: '&aReload Complete.'
+  drop-format: '{display_name} x {amount}'
+
+warning:
+  no-permission: '&cYou do not have permission to do this.'
+  region-not-found: '&cCould not find fishing region &7%region_name%'
+  region-conflict: '&cConflict with fishing region &7%region_name%'
+  region-name-repeat: '&cFishing region &7%region_name%&c already exist.'
+  cancel-delete: '&cCancel deletion.'
+  select-first: '&cYou have to select a region before creation'
+  wrong-value-chance: '&cValue of chance must be positive float number!'
+  wrong-value-broadcast: '&cValue of broadcast must be true or false!'
+  add-air: '&cAir cannot be a drop!'
+
+success:
+  create: '&aSuccessfully create fishing region &b%region_name%'
+  delete-drop: '&aSuccessfully delete drop %drop%'
+  delete-region: '&aSuccessfully delete fishing region %region_name%'
+  add-drop: '&aSuccessfully add %drop% to fishing region %region_name%'
+
+# menu display
+menu:
+  display-name: 'Drops of %region_name%'
+  previous-page: '&aPrevious page'
+  next-page: '&aNext page'
+  current-page: '&aCurrent page: &7%current_page%'
+  no-previous-page: '&cYou are already at the first page!'
+  no-next-page: '&cYou are already at the last page!'
+  item:
+    chance: '&bChance: &7%chance%%'
+    broadcast: '&6Broadcast: &7%broadcast%'
+    edit-chance: '&dLeft Click &7to edit chance'
+    edit-amount: '&dMiddle Click &7to edit amount'
+    delete: '&dRight Click &7to delete'
+    edit-broadcast: '&dLeft + Shift Click &7to switch broadcast'
