@@ -1,9 +1,11 @@
 package me.brotherhong.fishinglife2.commands.subcommands;
 
 import me.brotherhong.fishinglife2.FishingLife2;
+import me.brotherhong.fishinglife2.Messages;
 import me.brotherhong.fishinglife2.Permissions;
 import me.brotherhong.fishinglife2.commands.CommandManager;
 import me.brotherhong.fishinglife2.commands.SubCommand;
+import me.brotherhong.fishinglife2.fishing.FishingRegion;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -37,7 +39,24 @@ public class BoundaryCommand extends SubCommand {
 
     @Override
     public void execute(Player p, String[] args) {
+        // check syntax
+        if (args.length < 2) {
+            sendUsage(p);
+            return;
+        }
 
+        // check region
+        String regionName = args[1];
+        FishingRegion region = regionManager.getRegion(regionName);
+        if (region == null) {
+            Messages.REGION_NOT_FOUND.send(p, regionName);
+            return;
+        }
+
+        // show boundary
+        final int task = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, region::displayBoundary, 0, 5);
+
+        plugin.getServer().getScheduler().runTaskLater(plugin, () -> plugin.getServer().getScheduler().cancelTask(task), 60);
     }
 
     @Override

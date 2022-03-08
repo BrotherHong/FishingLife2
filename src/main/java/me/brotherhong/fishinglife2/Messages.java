@@ -15,6 +15,9 @@ public enum Messages {
     BROADCAST_MESSAGE("general.broadcast-message"),
     RELOAD("general.reload"),
     ITEM_FORMAT("general.drop-format"),
+    BOUNDARY_COLOR("general.boundary-color"),
+    INPUT_QUERY_CHANCE("general.input-query-chance"),
+    INPUT_QUERY_AMOUNT("general.input-query-amount"),
 
     // warning
     NO_PERMISSION("warning.no-permission"),
@@ -22,16 +25,21 @@ public enum Messages {
     REGION_CONFLICT("warning.region-conflict"),
     REGION_NAME_REPEAT("warning.region-name-repeat"),
     CANCEL_DELETION("warning.cancel-delete"),
+    CANCEL_EDIT("warning.cancel-edit"),
     SELECT_FIRST("warning.select-first"),
     WRONG_VALUE_CHANCE("warning.wrong-value-chance"),
     WRONG_VALUE_BROADCAST("warning.wrong-value-broadcast"),
+    WRONG_VALUE_AMOUNT("warning.wrong-value-amount"),
     ADD_AIR("warning.add-air"),
+    AMOUNT_OVERFLOW("warning.amount-overflow"),
 
     // success
     SUCCESS_CREATE("success.create"),
     SUCCESS_DELETE_DROP("success.delete-drop"),
     SUCCESS_DELETE_REGION("success.delete-region"),
     SUCCESS_ADD_DROP("success.add-drop"),
+    SUCCESS_EDIT_CHANCE("success.edit-chance"),
+    SUCCESS_EDIT_AMOUNT("success.edit-amount"),
 
     // menu
     MENU_DISPLAY_NAME("menu.display-name"),

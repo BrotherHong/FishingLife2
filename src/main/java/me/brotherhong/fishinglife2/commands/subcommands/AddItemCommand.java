@@ -6,6 +6,7 @@ import me.brotherhong.fishinglife2.Permissions;
 import me.brotherhong.fishinglife2.commands.CommandManager;
 import me.brotherhong.fishinglife2.commands.SubCommand;
 import me.brotherhong.fishinglife2.fishing.FishingDrop;
+import me.brotherhong.fishinglife2.utils.TextUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -57,7 +58,7 @@ public class AddItemCommand extends SubCommand {
         }
 
         // check chance and broadcast
-        if (!chanceStr.matches("^[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*$")) {
+        if (!chanceStr.matches(TextUtil.POSITIVE_DOUBLE)) {
             Messages.WRONG_VALUE_CHANCE.send(p);
             return;
         }

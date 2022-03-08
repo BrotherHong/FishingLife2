@@ -6,6 +6,9 @@ import org.bukkit.Material;
 
 public class TextUtil {
 
+    public final static String POSITIVE_DOUBLE = "^[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*$";
+    public final static String POSITIVE_INTEGER = "^[1-9]+[0-9]*$";
+
     public static String trans(String str) {
         return ChatColor.translateAlternateColorCodes('&', str);
     }

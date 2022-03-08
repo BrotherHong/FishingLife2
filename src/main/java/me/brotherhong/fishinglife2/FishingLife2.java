@@ -6,6 +6,7 @@ import me.brotherhong.fishinglife2.configs.ConfigManager;
 import me.brotherhong.fishinglife2.fishing.FishingRegionManager;
 import me.brotherhong.fishinglife2.listeners.FishCaughtListener;
 import me.brotherhong.fishinglife2.listeners.MenuClickListener;
+import me.brotherhong.fishinglife2.listeners.input.InputHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
@@ -44,6 +45,7 @@ public final class FishingLife2 extends JavaPlugin {
         Objects.requireNonNull(getCommand("fishinglife")).setExecutor(commandManager);
         getServer().getPluginManager().registerEvents(new MenuClickListener(this), this);
         getServer().getPluginManager().registerEvents(new FishCaughtListener(this), this);
+        getServer().getPluginManager().registerEvents(new InputHandler(this), this);
     }
 
     @Override

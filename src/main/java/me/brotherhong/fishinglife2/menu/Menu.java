@@ -1,6 +1,7 @@
 package me.brotherhong.fishinglife2.menu;
 
 import me.brotherhong.fishinglife2.FishingLife2;
+import me.brotherhong.fishinglife2.fishing.FishingRegionManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
@@ -9,6 +10,7 @@ import org.bukkit.inventory.InventoryHolder;
 public abstract class Menu implements InventoryHolder {
 
     protected FishingLife2 plugin;
+    protected FishingRegionManager regionManager;
     protected PlayerMenuUtility playerMenuUtility;
 
     protected Inventory inventory;
@@ -16,6 +18,7 @@ public abstract class Menu implements InventoryHolder {
     public Menu(FishingLife2 plugin, PlayerMenuUtility playerMenuUtility) {
         this.plugin = plugin;
         this.playerMenuUtility = playerMenuUtility;
+        this.regionManager = plugin.getFishingRegionManager();
     }
 
     public abstract String getMenuName();

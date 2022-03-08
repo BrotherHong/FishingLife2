@@ -15,7 +15,10 @@ general:
   caught-message: '&aYou caught %drop%'
   broadcast-message: '&aPlayer &e%player%&a caught %drop% in %region_name%'
   reload: '&aReload Complete.'
-  drop-format: '{display_name} x {amount}'
+  drop-format: '&d{display_name} &7x {amount}'
+  boundary-color: '#00CDFF'
+  input-query-chance: '&ePlease input new chance. &7Type - to cancel.'
+  input-query-amount: '&ePlease input new amount. &7Type - to cancel.'
 
 warning:
   no-permission: '&cYou do not have permission to do this.'
@@ -23,23 +26,28 @@ warning:
   region-conflict: '&cConflict with fishing region &7%region_name%'
   region-name-repeat: '&cFishing region &7%region_name%&c already exist.'
   cancel-delete: '&cCancel deletion.'
+  cancel-edit: '&cCancel edition.'
   select-first: '&cYou have to select a region before creation'
   wrong-value-chance: '&cValue of chance must be positive float number!'
   wrong-value-broadcast: '&cValue of broadcast must be true or false!'
+  wrong-value-amount: '&cValue of amount must be from 1 to the max stack amount of an item.'
   add-air: '&cAir cannot be a drop!'
+  amount-overflow: '&cThe amount is over the limit of the item'
 
 success:
   create: '&aSuccessfully create fishing region &b%region_name%'
-  delete-drop: '&aSuccessfully delete drop %drop%'
-  delete-region: '&aSuccessfully delete fishing region %region_name%'
-  add-drop: '&aSuccessfully add %drop% to fishing region %region_name%'
+  delete-drop: '&aSuccessfully delete drop &7%drop%'
+  delete-region: '&aSuccessfully delete fishing region &7%region_name%'
+  add-drop: '&aSuccessfully add %drop% to fishing region &7%region_name%'
+  edit-chance: '&aSuccessfully modify the chance of &7%drop%'
+  edit-amount: '&aSuccessfully modify the amount of &7%drop%'
 
 # menu display
 menu:
   display-name: 'Drops of %region_name%'
-  previous-page: '&aPrevious page'
-  next-page: '&aNext page'
-  current-page: '&aCurrent page: &7%current_page%'
+  previous-page: '&9Previous page'
+  next-page: '&9Next page'
+  current-page: '&9Current page: &7%current_page%'
   no-previous-page: '&cYou are already at the first page!'
   no-next-page: '&cYou are already at the last page!'
   item:

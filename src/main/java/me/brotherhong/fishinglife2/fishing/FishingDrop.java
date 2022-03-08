@@ -72,6 +72,10 @@ public class FishingDrop {
         return broadcast;
     }
 
+    public void switchBroadcast() {
+        broadcast = !broadcast;
+    }
+
     public void setBroadcast(boolean broadcast) {
         this.broadcast = broadcast;
     }

@@ -2,8 +2,9 @@ package me.brotherhong.fishinglife2.fishing;
 
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.regions.Region;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import me.brotherhong.fishinglife2.Messages;
+import me.brotherhong.fishinglife2.utils.ColorUtil;
+import org.bukkit.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.BlockVector;
@@ -117,6 +118,39 @@ public class FishingRegion {
         return (pos1.getBlockX() <= location.getBlockX() && location.getBlockX() <= pos2.getBlockX() &&
                 pos1.getBlockY() <= location.getBlockY() && location.getBlockY() <= pos2.getBlockY() &&
                 pos1.getBlockZ() <= location.getBlockZ() && location.getBlockZ() <= pos2.getBlockZ());
+    }
+
+    public void displayBoundary() {
+        World world = Bukkit.getWorld(worldName);
+        Particle particle = Particle.REDSTONE;
+        int[] colors = ColorUtil.toRGB256(Messages.BOUNDARY_COLOR.get());
+        Particle.DustOptions dustColor = new Particle.DustOptions(Color.fromRGB(colors[0], colors[1], colors[2]), 1.0f);
+        int amount = 3;
+        double d = 0.25;
+        double[] start = {pos1.getBlockX(), pos1.getBlockY(), pos1.getBlockZ()};
+        double[] end = {pos2.getBlockX()+1, pos2.getBlockY()+1, pos2.getBlockZ()+1};
+        assert world != null;
+        // X
+        for (double x = start[0];x <= end[0];x+=d) {
+            world.spawnParticle(particle, x, start[1], start[2], amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, x, end[1], start[2], amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, x, start[1], end[2], amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, x, end[1], end[2], amount, 0, 0, 0, dustColor);
+        }
+        // Y
+        for (double y = start[1];y <= end[1];y+=d) {
+            world.spawnParticle(particle, start[0], y, start[2], amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, end[0], y, start[2], amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, start[0], y, end[2], amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, end[0], y, end[2], amount, 0, 0, 0, dustColor);
+        }
+        // Z
+        for (double z = start[2];z <= end[2];z+=d) {
+            world.spawnParticle(particle, start[0], start[1], z, amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, end[0], start[1], z, amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, start[0], end[1], z, amount, 0, 0, 0, dustColor);
+            world.spawnParticle(particle, end[0], end[1], z, amount, 0, 0, 0, dustColor);
+        }
     }
 
     private boolean isIntersect(int p1, int p2, int q1, int q2) {

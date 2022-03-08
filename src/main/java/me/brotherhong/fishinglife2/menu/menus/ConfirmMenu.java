@@ -16,10 +16,10 @@ import java.util.Objects;
 
 public class ConfirmMenu extends Menu {
 
-    private Player p;
-    private String region;
-    private int targetSlot;
-    private ConfirmType confirmType;
+    private final Player p;
+    private final String region;
+    private final int targetSlot;
+    private final ConfirmType confirmType;
 
     public ConfirmMenu(FishingLife2 plugin, PlayerMenuUtility playerMenuUtility) {
         super(plugin, playerMenuUtility);
@@ -51,6 +51,9 @@ public class ConfirmMenu extends Menu {
                 break;
         }
         p.closeInventory();
+        if (confirmType == ConfirmType.DELETE_DROP) {
+            new EditMenu(plugin, playerMenuUtility).open();
+        }
     }
 
     @Override

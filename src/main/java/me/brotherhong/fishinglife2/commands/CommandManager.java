@@ -87,7 +87,7 @@ public class CommandManager implements TabExecutor {
     }
 
     private void sendHelp(Player p) {
-        p.sendMessage(TextUtil.trans("&b----------" + Messages.PREFIX.get() + "&9----------"));
+        p.sendMessage(TextUtil.trans("&b----------" + Messages.PREFIX.get() + "&b----------"));
         for (SubCommand subCommand : subCommands) {
             p.sendMessage(TextUtil.trans("&b" + subCommand.getUsage() + "&7 - " + subCommand.getDescription()));
         }
