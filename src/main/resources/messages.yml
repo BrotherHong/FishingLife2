@@ -6,6 +6,7 @@ prefix: '&7[&bFishing&cLife&7]'
 #   %broadcast% - broadcast or not
 #   %drop% - drop's display name
 #   %region_name% - region's name
+#   %region_amount% - the amount of fishing regions
 #   %current_page% - current page
 
 # general messages
@@ -13,12 +14,13 @@ general:
   yes-msg: '&aYes'
   no-msg: '&cNo'
   caught-message: '&aYou caught %drop%'
-  broadcast-message: '&aPlayer &e%player%&a caught %drop% in %region_name%'
+  broadcast-message: '&aPlayer &e%player%&a caught %drop% &ain %region_name%'
   reload: '&aReload Complete.'
   drop-format: '&d{display_name} &7x {amount}'
   boundary-color: '#00CDFF'
   input-query-chance: '&ePlease input new chance. &7Type - to cancel.'
   input-query-amount: '&ePlease input new amount. &7Type - to cancel.'
+  list-title: '&bTotal &f%region_amount%&b fishing regions'
 
 warning:
   no-permission: '&cYou do not have permission to do this.'
@@ -41,6 +43,8 @@ success:
   add-drop: '&aSuccessfully add %drop% to fishing region &7%region_name%'
   edit-chance: '&aSuccessfully modify the chance of &7%drop%'
   edit-amount: '&aSuccessfully modify the amount of &7%drop%'
+  tp: '&aYou have been teleported to fishing region &7%region_name%'
+  reselect: '&aSuccessfully reselect fishing region &7%region_name%'
 
 # menu display
 menu:

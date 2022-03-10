@@ -18,6 +18,7 @@ public enum Messages {
     BOUNDARY_COLOR("general.boundary-color"),
     INPUT_QUERY_CHANCE("general.input-query-chance"),
     INPUT_QUERY_AMOUNT("general.input-query-amount"),
+    LIST_TITLE("general.list-title"),
 
     // warning
     NO_PERMISSION("warning.no-permission"),
@@ -40,6 +41,8 @@ public enum Messages {
     SUCCESS_ADD_DROP("success.add-drop"),
     SUCCESS_EDIT_CHANCE("success.edit-chance"),
     SUCCESS_EDIT_AMOUNT("success.edit-amount"),
+    SUCCESS_TP("success.tp"),
+    SUCCESS_RESELECT("success.reselect"),
 
     // menu
     MENU_DISPLAY_NAME("menu.display-name"),
@@ -64,7 +67,7 @@ public enum Messages {
     }
 
     private String getByPath(String path) {
-        return TextUtil.trans(FishingLife2.getInstance().getConfigManager()
+        return TextUtil.colorize(FishingLife2.getInstance().getConfigManager()
                 .getConfigHandler(ConfigType.MESSAGES)
                 .getConfig().getString(path));
     }
@@ -91,6 +94,7 @@ public enum Messages {
     #   %broadcast% - broadcast or not
     #   %drop% - drop's display name
     #   %region_name% - region's name
+    #   %region_amount% - the amount of fishing regions
     #   %current_page% - current page
     * */
 
@@ -114,6 +118,10 @@ public enum Messages {
         }
         if (idx < replaces.length && str.contains("%region_name%")) {
             str = str.replaceAll("%region_name%", replaces[idx]);
+            idx++;
+        }
+        if (idx < replaces.length && str.contains("%region_amount%")) {
+            str = str.replaceAll("%region_amount%", replaces[idx]);
             idx++;
         }
         if (idx < replaces.length && str.contains("%current_page%")) {

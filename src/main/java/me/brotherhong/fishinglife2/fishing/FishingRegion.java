@@ -100,6 +100,7 @@ public class FishingRegion {
     }
 
     public void setRegionPosition(Region region) {
+        setWorldName(Objects.requireNonNull(region.getWorld()).getName());
         BlockVector3 point = region.getMinimumPoint();
         setPos1(new BlockVector(point.getBlockX(), point.getBlockY(), point.getBlockZ()));
         point = region.getMaximumPoint();
@@ -151,6 +152,17 @@ public class FishingRegion {
             world.spawnParticle(particle, start[0], end[1], z, amount, 0, 0, 0, dustColor);
             world.spawnParticle(particle, end[0], end[1], z, amount, 0, 0, 0, dustColor);
         }
+    }
+
+    public Location getTpLocation() {
+        World world = Bukkit.getWorld(worldName);
+        Location location = new Location(world,
+                (pos1.getX() + pos2.getX()) / 2,
+                (pos1.getY() + pos2.getY()) / 2,
+                (pos1.getZ() + pos2.getZ()) / 2
+                );
+        assert world != null;
+        return world.getHighestBlockAt(location).getLocation();
     }
 
     private boolean isIntersect(int p1, int p2, int q1, int q2) {

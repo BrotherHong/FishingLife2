@@ -2,12 +2,9 @@ package me.brotherhong.fishinglife2.fishing;
 
 import me.brotherhong.fishinglife2.Messages;
 import me.brotherhong.fishinglife2.utils.TextUtil;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class FishingDrop {
@@ -49,7 +46,7 @@ public class FishingDrop {
         String format = Messages.ITEM_FORMAT.get()
                 .replaceAll("\\{display_name}", "%s")
                 .replaceAll("\\{amount}", "%d");
-        return TextUtil.trans(String.format(format, displayName, amount));
+        return TextUtil.colorize(String.format(format, displayName, amount));
     }
 
     public ItemStack getItem() {

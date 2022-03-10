@@ -3,7 +3,6 @@ package me.brotherhong.fishinglife2.commands;
 import me.brotherhong.fishinglife2.FishingLife2;
 import me.brotherhong.fishinglife2.Messages;
 import me.brotherhong.fishinglife2.commands.subcommands.*;
-import me.brotherhong.fishinglife2.configs.ConfigType;
 import me.brotherhong.fishinglife2.fishing.FishingRegion;
 import me.brotherhong.fishinglife2.utils.TextUtil;
 import org.bukkit.command.Command;
@@ -13,7 +12,6 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CommandManager implements TabExecutor {
@@ -27,14 +25,20 @@ public class CommandManager implements TabExecutor {
     }
 
     public void loadCommand() {
-        subCommands.add(new AddItemCommand(plugin));
-        subCommands.add(new BoundaryCommand(plugin));
-        subCommands.add(new CreateCommand(plugin));
-        subCommands.add(new DeleteCommand(plugin));
-        subCommands.add(new EditCommand(plugin));
-        subCommands.add(new ListCommand(plugin));
-        subCommands.add(new ReloadCommand(plugin));
-        subCommands.add(new ShowCommand(plugin));
+        registerCommand(new AddItemCommand(plugin));
+        registerCommand(new BoundaryCommand(plugin));
+        registerCommand(new CreateCommand(plugin));
+        registerCommand(new DeleteCommand(plugin));
+        registerCommand(new EditCommand(plugin));
+        registerCommand(new ListCommand(plugin));
+        registerCommand(new ReloadCommand(plugin));
+        registerCommand(new ReselectCommand(plugin));
+        registerCommand(new ShowCommand(plugin));
+        registerCommand(new TeleportCommand(plugin));
+    }
+
+    private void registerCommand(SubCommand subCommand) {
+        subCommands.add(subCommand);
     }
 
 
@@ -87,9 +91,9 @@ public class CommandManager implements TabExecutor {
     }
 
     private void sendHelp(Player p) {
-        p.sendMessage(TextUtil.trans("&b----------" + Messages.PREFIX.get() + "&b----------"));
+        p.sendMessage(TextUtil.colorize("&b----------" + Messages.PREFIX.get() + "&b----------"));
         for (SubCommand subCommand : subCommands) {
-            p.sendMessage(TextUtil.trans("&b" + subCommand.getUsage() + "&7 - " + subCommand.getDescription()));
+            p.sendMessage(TextUtil.colorize("&b" + subCommand.getUsage() + "&7 - " + subCommand.getDescription()));
         }
     }
 
