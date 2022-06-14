@@ -39,9 +39,12 @@ public class FishingDrop {
 
     public String getDisplayName() {
         int amount = item.getAmount();
-        String displayName = Objects.requireNonNull(item.getItemMeta()).getDisplayName();
-        if (!item.getItemMeta().hasDisplayName()) {
-            displayName = TextUtil.fromMaterial(item.getType());
+        String displayName;
+        assert item.getItemMeta() != null;
+        if (item.getItemMeta().hasDisplayName()) {
+            displayName = item.getItemMeta().getDisplayName();
+        } else {
+            displayName = TextUtil.getLocaleName(item);
         }
         String format = Messages.ITEM_FORMAT.get()
                 .replaceAll("\\{display_name}", "%s")

@@ -41,6 +41,8 @@ public class EditMenu extends PaginatedMenu {
             super.handlePageSwitch(-1);
         } else if (e.getSlot() == 53) {
             super.handlePageSwitch(1);
+        } else if (e.getSlot() == 49) {
+            // nothing to do
         } else {
             int clickedSlot = e.getSlot() + page * maxItemPerPage;
             playerMenuUtility.setRegionName(region);

@@ -7,6 +7,8 @@ import me.brotherhong.fishinglife2.fishing.FishingRegionManager;
 import me.brotherhong.fishinglife2.listeners.FishCaughtListener;
 import me.brotherhong.fishinglife2.listeners.MenuClickListener;
 import me.brotherhong.fishinglife2.listeners.input.InputHandler;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
@@ -15,9 +17,10 @@ public final class FishingLife2 extends JavaPlugin {
 
     private static FishingLife2 instance;
     private static WorldEditPlugin worldEditPlugin;
-    private ConfigManager configManager;
-    private FishingRegionManager fishingRegionManager;
-    private CommandManager commandManager;
+
+    private final ConfigManager configManager;
+    private final FishingRegionManager fishingRegionManager;
+    private final CommandManager commandManager;
 
     public FishingLife2() {
         configManager = new ConfigManager(this);
@@ -34,18 +37,21 @@ public final class FishingLife2 extends JavaPlugin {
         fishingRegionManager.loadRegions();
         commandManager.loadCommand();
 
-        worldEditPlugin = (WorldEditPlugin) getServer().getPluginManager().getPlugin("WorldEdit");
-        if (worldEditPlugin == null) {
+        PluginManager pm = getServer().getPluginManager();
+
+        if (Bukkit.getPluginManager().isPluginEnabled("WorldEdit")) {
+            worldEditPlugin = (WorldEditPlugin) getServer().getPluginManager().getPlugin("WorldEdit");
+        } else {
             getServer().getLogger().severe("WorldEdit is required to enable this plugin!");
             getServer().getLogger().severe("Disabling plugin...");
-            getServer().getPluginManager().disablePlugin(this);
+            pm.disablePlugin(this);
             return;
         }
 
         Objects.requireNonNull(getCommand("fishinglife")).setExecutor(commandManager);
-        getServer().getPluginManager().registerEvents(new MenuClickListener(this), this);
-        getServer().getPluginManager().registerEvents(new FishCaughtListener(this), this);
-        getServer().getPluginManager().registerEvents(new InputHandler(this), this);
+        pm.registerEvents(new MenuClickListener(this), this);
+        pm.registerEvents(new FishCaughtListener(this), this);
+        pm.registerEvents(new InputHandler(this), this);
     }
 
     @Override
